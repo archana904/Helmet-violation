@@ -1,0 +1,143 @@
+
+import {
+  Cpu,
+  Monitor,
+  Gauge,
+  Clock,
+  Zap,
+  Info,
+} from "lucide-react";
+
+function Performance() {
+  return (
+    <div className="page-section">
+      <div className="eyebrow">
+        <Gauge size={15} />
+        HARDWARE PERFORMANCE
+      </div>
+
+      <h1>CPU vs GPU Performance</h1>
+      <p className="page-description">
+        Compare hardware execution and inference performance for object detection.
+      </p>
+
+      <div className="performance-grid">
+        <div className="panel hardware-card">
+          <div className="hardware-heading">
+            <div className="stat-icon blue">
+              <Cpu size={23} />
+            </div>
+            <span className="hardware-status available">Tested</span>
+          </div>
+
+          <h3>CPU</h3>
+          <h2>Intel Core i7-1185G7</h2>
+          <p>11th Generation · 3.00 GHz</p>
+
+          <div className="hardware-divider" />
+
+          <div className="hardware-metric">
+            <span>Average inference time</span>
+            <strong>107.2 ms/frame</strong>
+          </div>
+
+          <div className="hardware-metric">
+            <span>Preprocessing</span>
+            <strong>4.8 ms</strong>
+          </div>
+
+          <div className="hardware-metric">
+            <span>Postprocessing</span>
+            <strong>1.6 ms</strong>
+          </div>
+        </div>
+
+        <div className="panel hardware-card">
+          <div className="hardware-heading">
+            <div className="stat-icon purple">
+              <Monitor size={23} />
+            </div>
+            <span className="hardware-status pending">Pending</span>
+          </div>
+
+          <h3>GPU</h3>
+          <h2>CUDA GPU</h2>
+          <p>GPU benchmark not yet performed</p>
+
+          <div className="hardware-divider" />
+
+          <div className="hardware-metric">
+            <span>Average inference time</span>
+            <strong>--</strong>
+          </div>
+
+          <div className="hardware-metric">
+            <span>Preprocessing</span>
+            <strong>--</strong>
+          </div>
+
+          <div className="hardware-metric">
+            <span>Postprocessing</span>
+            <strong>--</strong>
+          </div>
+        </div>
+      </div>
+
+      <div className="panel performance-info">
+        <div className="panel-heading">
+          <div>
+            <h3>Benchmark Information</h3>
+            <p>Understanding our current measurements</p>
+          </div>
+          <Info className="heading-icon" />
+        </div>
+
+        <div className="benchmark-details">
+          <div>
+            <Clock size={19} />
+            <section>
+              <strong>Inference Time</strong>
+              <p>
+                Time taken by the model to process an input frame and produce
+                predictions.
+              </p>
+            </section>
+          </div>
+
+          <div>
+            <Gauge size={19} />
+            <section>
+              <strong>FPS (Frames Per Second)</strong>
+              <p>
+                Number of frames processed per second. Higher FPS generally
+                means faster processing.
+              </p>
+            </section>
+          </div>
+
+          <div>
+            <Zap size={19} />
+            <section>
+              <strong>Hardware Comparison</strong>
+              <p>
+                CPU and GPU results will be compared using the same model,
+                input video and measurement procedure.
+              </p>
+            </section>
+          </div>
+        </div>
+      </div>
+
+      <div className="benchmark-warning">
+        <Info size={18} />
+        <p>
+          CPU measurements are from a separate YOLO11n tracking test.
+          They are not full-pipeline measurements. GPU results will be added
+          after a comparable GPU benchmark is completed.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+export default Performance;
